@@ -18,6 +18,7 @@ from eng_calc.utilities.errors import (
 from eng_calc.utilities.constants import PhysicalConstants
 from eng_calc.utilities.units import UnitCategory, UnitDefinition, UNIT_DEFINITIONS
 from eng_calc.utilities.validators import Validator
+from eng_calc.utilities.unit_converter import UnitConverter
 
 __all__ = [
     "EngCalcError",
@@ -30,4 +31,5 @@ __all__ = [
     "UnitDefinition",
     "UNIT_DEFINITIONS",
     "Validator",
+    "UnitConverter",
 ]
