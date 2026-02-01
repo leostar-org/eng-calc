@@ -1,0 +1,12 @@
+# eng-calc - Engineering Calculator Dependencies
+# Python 3.10+ required
+
+# Core Dependencies
+PyQt6>=6.5.0              # GUI framework
+numpy>=1.24.0             # Numerical calculations
+
+# Development Dependencies (install with: pip install -r requirements.txt)
+# pytest>=7.4.0           # Testing framework
+# pytest-cov>=4.1.0       # Coverage reporting
+# black>=23.7.0           # Code formatting
+# mypy>=1.4.0             # Type checking
