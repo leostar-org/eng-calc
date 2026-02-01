@@ -121,8 +121,8 @@ class StressCalculatorWidget(CalculatorWidget):
         inputs = self.get_inputs()
         calc = StressCalculator()
         result = calc.calculate_tensile_stress(inputs["force"], inputs["area"])
-        # Extract value from CalculationResult
-        stress_value = float(str(result).split(': ')[1]) if ': ' in str(result) else result
+        # Extract value from CalculationResult object
+        stress_value = result.value if hasattr(result, 'value') else float(result)
 
         return (
             f"<b>Stress Calculation Results</b><br>"
@@ -161,14 +161,15 @@ class ForceCalculatorWidget(CalculatorWidget):
     def perform_calculation(self) -> str:
         inputs = self.get_inputs()
         calc = ForceCalculator()
-        result = calc.calculate_resultant_force([inputs["force1"], inputs["force2"]])
-        # Extract value from CalculationResult
-        resultant_value = float(str(result).split(': ')[1]) if ': ' in str(result) else result
+        calc.set_force_vectors([(inputs["force1"], inputs["force2"])])
+        result = calc.calculate("resultant_force")
+        # Extract value from CalculationResult object
+        resultant_value = result.value if hasattr(result, 'value') else float(result)
 
         return (
             f"<b>Force Calculation Results</b><br>"
-            f"Force 1: {inputs['force1']:.2f} N<br>"
-            f"Force 2: {inputs['force2']:.2f} N<br>"
+            f"Force X: {inputs['force1']:.2f} N<br>"
+            f"Force Y: {inputs['force2']:.2f} N<br>"
             f"<b>Resultant: {resultant_value:.2f} N</b>"
         )
 
